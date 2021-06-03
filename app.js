@@ -9,7 +9,7 @@ var io = require('socket.io')(http, {
   },
 });
 var path = require('path')
-app.use('/assets', express.static(path.join(__dirname + '/client/assets')))
+app.use(express.static(path.join(__dirname + '/client')))
 
 app.get('/', (req, res) => {
   let htmlFile = path.join(__dirname + '/client/index.html')

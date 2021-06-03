@@ -30,10 +30,10 @@ var frameLength = {
 }
 
 function preload() {
-  let basePath = '/assets/sprites/HeroKnight'
-  this.load.image('char', '/assets/char.png');
-  this.load.image('ground', '/assets/platform.png');
-  this.load.image('background', '/assets/bg.png');
+  let basePath = '/assets/images/sprites/HeroKnight'
+  this.load.image('char', '/assets/images/char.png');
+  this.load.image('ground', '/assets/images/platform.png');
+  this.load.image('background', '/assets/images/bg.png');
 
   loadAssets = loadAssets.bind(this)
   let assetsList = ["Idle", "Run", "Jump", "Attack1", "Attack2", "Attack3"]
@@ -112,13 +112,13 @@ function update() {
     player.setVelocityX(-200);
     player.flipX = true
     player.anims.play('animHeroRun', true)
-    // socket.emit('updatePos', position)
+    socket.emit('updatePos', position)
   } else if (cursors.space.isDown) {
     player.anims.play('animHeroAttack3', true)
   } else if (cursors.right.isDown) {
     player.flipX = false
     player.setVelocityX(200);
-    // socket.emit('updatePos', position)
+    socket.emit('updatePos', position)
     player.anims.play('animHeroRun', true)
   } else {
     player.setVelocityX(0);
@@ -133,6 +133,7 @@ function update() {
     if (cursors.up.getDuration() < 120 && jumCount <= 2) {
       player.setVelocityY(-430);
     }
+    socket.emit('updatePos', position)
     player.anims.play('animHeroJump', true)
   }
 
