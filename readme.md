@@ -1,4 +1,6 @@
-### How To Run
+![PReview](preview.gif)
+
+# How To Run
 
 ## Server
 
